@@ -896,6 +896,24 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   }
+
+  /* ===================== 주소의 #앵커(예: #fee)로 정확히 이동 =====================
+     구성원·서비스 카드와 웹폰트가 늦게 채워지며 위치가 밀리므로, 로딩 후 다시 맞춘다.
+     사용자가 먼저 스크롤하면 건드리지 않는다. */
+  if (location.hash.length > 1) {
+    var userMoved = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) {
+      window.addEventListener(ev, function () { userMoved = true; }, { once: true, passive: true });
+    });
+    var goToHash = function () {
+      if (userMoved) return;
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+    };
+    goToHash();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(goToHash);
+    window.addEventListener('load', function () { goToHash(); setTimeout(goToHash, 300); });
+  }
 })();
 </script>
 </body>
