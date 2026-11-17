@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>에이원노무법인 | A1 LABOR LAW FIRM</title>
+<meta name="description" content="진정성을 바탕으로 고객에게 몰입하는 전문가다운 전문가 집단, 에이원노무법인. 기업자문, 컨설팅, 노사관계, 노동사건, 산업재해.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #F6F4F2;
+    --burgundy: #820F1F;
+    --red: #A90F15;
+    --brown: #46230E;
+    --text: #1E293B;
+    --muted: #4B5563;
+    --line: rgba(70, 35, 14, 0.12);
+    --card: rgba(255, 255, 255, 0.72);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --shadow: 0 1px 2px rgba(30, 41, 59, 0.04), 0 8px 24px rgba(70, 35, 14, 0.06);
+    --shadow-hover: 0 2px 4px rgba(30, 41, 59, 0.05), 0 16px 40px rgba(70, 35, 14, 0.10);
+    --radius: 18px;
+    --max: 1120px;
+    --nav-h: 64px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); -webkit-text-size-adjust: 100%; }
+  html.modal-open { overflow: hidden; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { color: var(--brown); line-height: 1.3; letter-spacing: -0.025em; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  button { font: inherit; color: inherit; }
+  img { max-width: 100%; display: block; }
+  [hidden] { display: none !important; }
+
+  :focus-visible { outline: 2px solid var(--burgundy); outline-offset: 3px; border-radius: 6px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .skip-link {
+    position: absolute; left: 16px; top: -48px; z-index: 100;
+    background: var(--burgundy); color: #fff; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+  }
+  .skip-link:focus { top: 12px; }
+
+  .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--nav-h);
+    background: rgba(246, 244, 242, 0.78);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; color: var(--brown); font-size: 17px; white-space: nowrap; flex: none; }
+  .brand-mark { width: 38px; height: 38px; object-fit: contain; margin: -4px -2px -4px -6px; flex: none; }
+  .nav nav { min-width: 0; }
+  .nav-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    display: block; text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 8px; white-space: nowrap;
+    transition: color .2s, background-color .2s;
+  }
+  .nav-links a:hover { color: var(--burgundy); background: rgba(130, 15, 31, 0.06); }
+
+  /* ---------- Common ---------- */
+  .card {
+    background: var(--card);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .25s;
+  }
+  .card.lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+  .tag {
+    display: inline-flex; align-items: center;
+    font-size: 13px; font-weight: 500; line-height: 1.4;
+    padding: 5px 11px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--line);
+    color: var(--text);
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .tag:hover { background: var(--burgundy); border-color: var(--burgundy); color: #fff; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center;
+    padding: calc(var(--nav-h) + 56px) 0 88px;
+    background:
+      radial-gradient(70% 60% at 85% 35%, rgba(130, 15, 31, 0.10), transparent 70%),
+      radial-gradient(50% 50% at 10% 90%, rgba(169, 15, 21, 0.05), transparent 70%),
+      linear-gradient(160deg, #F6F4F2 0%, #F5EFEC 45%, #F2E4E2 100%);
+  }
+  .hero::after { /* 다음 섹션과 자연스럽게 이어지도록 */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(246, 244, 242, 0), var(--bg));
+  }
+  .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 40px; }
+  .hero-logo { height: 124px; width: auto; max-width: 260px; object-fit: contain; margin: -12px 0 -12px -14px; }
+  .hero-logo-fallback { width: 72px; height: 72px; border-radius: 50%; background: var(--burgundy); color: #fff; font-size: 24px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(130, 15, 31, 0.25); }
+  .hero-logo-fallback[hidden] { display: none; }
+  .hero-eyebrow { margin-top: 32px; font-size: 15px; font-weight: 600; letter-spacing: 0.2em; color: var(--burgundy); }
+  .hero h1 { margin-top: 12px; font-size: clamp(44px, 7.2vw, 84px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.12; }
+  .hero-slogan { margin-top: 28px; font-size: clamp(21px, 2.7vw, 30px); font-weight: 650; color: var(--text); line-height: 1.45; letter-spacing: -0.03em; }
+  .hero-divider { width: 48px; height: 2px; background: var(--burgundy); margin: 28px 0 22px; border: 0; }
+  .hero-vision { font-size: clamp(17px, 1.7vw, 20px); color: var(--muted); line-height: 1.6; max-width: 30em; }
+  .hero-art { width: 100%; max-width: 480px; justify-self: end; }
+  .hero-art svg { width: 100%; height: auto; display: block; }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: 96px 0; }
+  .section-head { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 8px 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 40px; position: relative; }
+  .section-head::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 56px; height: 1px; background: var(--burgundy); }
+  .section-num { font-size: 14px; font-weight: 700; color: var(--burgundy); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; padding-bottom: 6px; }
+  .section-head h2 { font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; }
+  .section-desc { grid-column: 2; color: var(--muted); font-size: 15.5px; }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  /* ---------- Members ---------- */
+  .member {
+    width: 100%; padding: 28px; text-align: left; cursor: pointer;
+    display: flex; flex-direction: column; align-items: stretch; gap: 16px; height: 100%;
+  }
+  .member { position: relative; }
+  .member:hover { border-color: rgba(130, 15, 31, 0.25); }
+  .member-open { all: unset; cursor: pointer; }
+  .member-open::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+  .member-open:focus-visible { outline: none; }
+  .member-open:focus-visible::after { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+  .member h3 { font-size: 21px; font-weight: 700; }
+  .member-role { font-size: 14px; font-weight: 600; color: var(--burgundy); margin-top: 4px; }
+  .member-list { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 8px; flex: 1; align-content: start; }
+  .member-list li, .modal-list li { position: relative; padding-left: 14px; font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+  .member-list li::before, .modal-list li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 5px; height: 1px; background: var(--brown); opacity: .55; }
+  .member-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--brown); transition: color .2s, gap .25s var(--ease); }
+  .member:hover .member-more { color: var(--burgundy); gap: 10px; }
+  .member-more svg { width: 14px; height: 14px; }
+
+  /* ---------- Modal ---------- */
+  .modal {
+    width: min(880px, calc(100% - 32px)); max-height: min(88vh, 920px);
+    padding: 0; border: 0; border-radius: 22px; overflow: hidden;
+    background: #fff; color: var(--text);
+    box-shadow: 0 24px 80px rgba(30, 41, 59, 0.25);
+  }
+  .modal::backdrop { background: rgba(30, 41, 59, 0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .modal[open] { animation: modal-in .3s var(--ease); }
+  @keyframes modal-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .modal-scroll { max-height: inherit; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .modal-close {
+    position: absolute; top: 14px; right: 14px; z-index: 2;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92); cursor: pointer; display: grid; place-items: center;
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .modal-close:hover { background: var(--burgundy); border-color: var(--burgundy); color: #fff; }
+  .modal-close svg { width: 18px; height: 18px; }
+  .modal-content { display: grid; grid-template-columns: 260px 1fr; gap: 36px; padding: 40px; }
+  .modal-photo { border-radius: 16px; overflow: hidden; background: #F3F0ED; align-self: start; }
+  .modal-photo img { width: 100%; height: auto; }
+  .modal-name { font-size: 28px; font-weight: 800; padding-right: 44px; }
+  .modal-role { margin-top: 4px; font-size: 15px; font-weight: 600; color: var(--burgundy); }
+  .modal-block { margin-top: 28px; }
+  .modal-block h3 { font-size: 15px; font-weight: 700; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .modal-list { display: grid; gap: 6px; }
+  .modal-list li { color: var(--text); font-size: 14.5px; }
+
+  /* ---------- Services ----------
+     타일·패널 크기는 아래 변수 하나로 모든 대항목에 동일하게 적용 */
+  .svc-cats { display: grid; gap: 28px; --svc-tile-h: 320px; --svc-panel-h: 320px; --svc-panel-w: 360px; }
+  .svc-cat { padding: 32px; }
+  .svc-cat-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+  .svc-cat-head h3 { font-size: 22px; font-weight: 700; }
+  .svc-cat-count { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .svc-layout { display: grid; grid-template-columns: minmax(0, 1fr) var(--svc-panel-w); gap: 16px; align-items: start; }
+  .svc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: row dense; gap: 12px; }
+  /* 아이콘 타일: 전 대항목 공통 단일 클래스 */
+  .svc-btn {
+    height: var(--svc-tile-h); padding: 20px 12px; border-radius: 16px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+    background: rgba(255, 255, 255, 0.9); border: 1px solid var(--line); color: var(--text);
+    font-size: 17px; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; text-align: center; word-break: keep-all;
+    transition: background-color .2s, color .2s, border-color .2s, transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .svc-btn svg { width: 44px; height: 44px; flex: none; color: var(--burgundy); transition: color .2s; }
+  .svc-btn:hover { border-color: rgba(130, 15, 31, 0.35); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(70, 35, 14, 0.08); }
+  .svc-btn[aria-expanded="true"] { background: var(--burgundy); border-color: var(--burgundy); color: #fff; box-shadow: 0 8px 20px rgba(130, 15, 31, 0.22); }
+  .svc-btn[aria-expanded="true"] svg { color: #fff; }
+  /* 설명 박스: 고정 높이, 넘치면 박스 안에서만 스크롤 */
+  .svc-panel {
+    height: var(--svc-panel-h); overflow-y: auto; overscroll-behavior: contain;
+    border-radius: 16px; padding: 24px;
+    background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--burgundy);
+  }
+  .svc-panel[hidden] { display: none; }
+  .svc-grid > .svc-panel { grid-column: 1 / -1; animation: panel-in .3s var(--ease); }
+  @keyframes panel-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .svc-panel-label { font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: var(--burgundy); }
+  .svc-panel h4 { margin-top: 4px; font-size: 18px; font-weight: 700; }
+  .svc-panel p { margin-top: 12px; font-size: 15px; color: var(--text); line-height: 1.7; text-align: justify; word-break: keep-all; }
+
+  /* ---------- Achievements ---------- */
+  .achievements { border-top: 1px solid var(--line); }
+  .achievement { display: grid; grid-template-columns: 48px 112px 1fr; align-items: center; gap: 16px; padding: 22px 8px; border-bottom: 1px solid var(--line); transition: background-color .25s; }
+  .achievement:hover { background: rgba(255, 255, 255, 0.55); }
+  .achievement-idx { font-size: 13px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .achievement .tag { justify-self: start; }
+  .achievement p { font-size: 16px; font-weight: 500; color: var(--text); }
+  .note { margin-top: 16px; font-size: 13.5px; color: var(--muted); }
+
+  /* ---------- Fee estimate ---------- */
+  .fee { display: grid; grid-template-columns: 1fr 1.15fr; }
+  .fee-form { padding: 36px; border-right: 1px solid var(--line); display: grid; gap: 24px; align-content: start; }
+  .fee-form h3, .fee-result h3 { font-size: 18px; font-weight: 700; }
+  .fee-basis { margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+  .field label { display: block; font-size: 14.5px; font-weight: 600; color: var(--brown); margin-bottom: 8px; }
+  .input-wrap { position: relative; }
+  .input-wrap input {
+    width: 100%; height: 52px; padding: 0 48px 0 16px; border-radius: 12px;
+    border: 1px solid rgba(70, 35, 14, 0.25); background: #fff; color: var(--text);
+    font: inherit; font-size: 18px; font-weight: 600;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .input-wrap input:focus { outline: none; border-color: var(--burgundy); box-shadow: 0 0 0 3px rgba(130, 15, 31, 0.15); }
+  .input-wrap span { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 600; pointer-events: none; }
+  .check { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 15px; line-height: 1.5; }
+  .check input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; accent-color: var(--burgundy); cursor: pointer; }
+  .fee-result { padding: 36px; display: grid; gap: 18px; align-content: start; }
+  .fee-bracket { font-size: 13.5px; color: var(--muted); min-height: 1.5em; }
+  .fee-rows { display: grid; }
+  .fee-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .fee-row dt { color: var(--muted); }
+  .fee-row dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+  .fee-row.total { border-bottom: 0; padding-top: 18px; }
+  .fee-row.total dt { color: var(--brown); font-weight: 700; font-size: 16px; }
+  .fee-row.total dd { color: var(--burgundy); font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+  .fee-row.total dd.consult { font-size: 18px; }
+  .fee-notes { display: grid; gap: 6px; padding: 16px 18px; border-radius: 12px; background: rgba(70, 35, 14, 0.04); }
+  .fee-notes li { position: relative; padding-left: 14px; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .fee-notes li::before { content: "※"; position: absolute; left: 0; font-size: 11px; top: 0.15em; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; }
+  .contact-info { padding: 12px 32px; }
+  .contact-info dl { margin: 0; }
+  .contact-row { display: grid; grid-template-columns: 88px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .contact-row:last-child { border-bottom: 0; }
+  .contact-row dt { font-size: 14px; font-weight: 600; color: var(--brown); }
+  .contact-row dd { margin: 0; font-size: 15.5px; }
+  .contact-row .addr { white-space: nowrap; }
+  .contact-row a { text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+  .contact-row a:hover { color: var(--burgundy); border-color: currentColor; }
+  .contact-cta { padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+  .contact-cta h3 { font-size: 22px; font-weight: 700; }
+  .contact-cta p { margin-top: 10px; color: var(--muted); font-size: 15px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--burgundy); color: #fff; text-decoration: none;
+    font-size: 16px; font-weight: 600; padding: 14px 22px; border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(130, 15, 31, 0.22);
+    transition: background-color .2s, transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .btn:hover { background: var(--red); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(130, 15, 31, 0.28); }
+  .btn:focus-visible { outline-offset: 4px; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 32px 0 40px; margin-top: 24px; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 13.5px; color: var(--muted); }
+  .footer-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+
+  /* ---------- Reveal ---------- */
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+    .card.lift:hover, .btn:hover, .svc-btn:hover { transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+    .hero-art { max-width: 360px; justify-self: center; opacity: .9; }
+    .svc-cats { --svc-tile-h: 156px; --svc-panel-h: 240px; }
+    .svc-layout { grid-template-columns: 1fr; }
+    .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .fee { grid-template-columns: 1fr; }
+    .fee-form { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 760px) {
+    .contact-row .addr { white-space: normal; }
+    .achievement { grid-template-columns: 112px 1fr; }
+    .achievement-idx { display: none; }
+    .modal-content { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px 32px; }
+    .modal-photo { max-width: 240px; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 16px; }
+    .brand { font-size: 15px; gap: 8px; }
+    .brand-mark { width: 34px; height: 34px; }
+    .nav-links a { font-size: 13px; padding: 6px 7px; }
+    .hero { min-height: auto; padding: calc(var(--nav-h) + 40px) 0 56px; }
+    .hero-logo { height: 96px; margin: -10px 0 -10px -11px; }
+    .hero-eyebrow { margin-top: 24px; font-size: 13px; }
+    .hero-art { max-width: 280px; }
+    section.block { padding: 64px 0; }
+    .section-head { grid-template-columns: 1fr; gap: 4px; margin-bottom: 28px; }
+    .section-num { padding-bottom: 0; }
+    .section-desc { grid-column: 1; }
+    .svc-cat { padding: 22px 16px; }
+    .achievement { grid-template-columns: 1fr; gap: 10px; padding: 20px 4px; }
+    .fee-form, .fee-result { padding: 24px 20px; }
+    .fee-row.total dd { font-size: 24px; }
+    .contact-info { padding: 4px 20px; }
+    .contact-row { grid-template-columns: 1fr; gap: 2px; }
+    .contact-cta { padding: 28px 20px; }
+    .btn { width: 100%; }
+    /* 모바일: 모달을 화면 전체로 */
+    .modal { width: 100%; max-width: 100%; height: 100%; max-height: 100%; border-radius: 0; margin: 0; }
+    .modal-scroll { height: 100%; max-height: 100%; }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    .member { padding: 22px; }
+    .svc-cats { --svc-tile-h: 148px; --svc-panel-h: 260px; }
+    .svc-grid { gap: 10px; }
+    .svc-btn { gap: 12px; padding: 16px 10px; }
+    .svc-btn svg { width: 40px; height: 40px; }
+    .svc-panel { padding: 20px; }
+  }
+  @media (max-width: 340px) {
+    .brand-text { display: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="nav">
+  <div class="container">
+    <a class="brand" href="#top" aria-label="에이원노무법인 처음으로">
+      <img class="brand-mark" src="logo.png" alt="" width="38" height="38">
+      <span class="brand-text">에이원노무법인</span>
+    </a>
+    <nav aria-label="섹션 바로가기">
+      <ul class="nav-links">
+        <li><a href="#members">구성원</a></li>
+        <li><a href="#services">서비스</a></li>
+        <li><a href="#achievements">주요 실적</a></li>
+        <li><a href="#fee">예상 비용</a></li>
+        <li><a href="#contact">문의</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <div class="hero-text reveal">
+        <img class="hero-logo" src="logo.png" alt="에이원노무법인 로고"
+             onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+        <span class="hero-logo-fallback" hidden aria-hidden="true">A1</span>
+        <p class="hero-eyebrow">A1 LABOR LAW FIRM</p>
+        <h1 id="hero-title">에이원노무법인</h1>
+        <p class="hero-slogan">진정성을 바탕으로 고객에게 몰입하는<br> 전문가다운 전문가 집단</p>
+        <hr class="hero-divider">
+        <p class="hero-vision">고객의 가장 가까운 곳에서 최적의 솔루션을 제공하는 인사노무 전문가</p>
+      </div>
+
+      <!-- 저울·법전·서류 모티프 일러스트 (직접 그린 SVG) -->
+      <div class="hero-art reveal" aria-hidden="true">
+        <svg viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="250" cy="215" r="196" fill="#820F1F" opacity=".05"/>
+          <circle cx="250" cy="215" r="156" fill="none" stroke="#820F1F" stroke-opacity=".16" stroke-dasharray="2 7"/>
+          <!-- 서류 -->
+          <g transform="rotate(8 350 170)">
+            <rect x="272" y="56" width="164" height="214" rx="12" fill="#FFFFFF" stroke="#46230E" stroke-opacity=".16"/>
+            <rect x="294" y="84" width="84" height="9" rx="4.5" fill="#46230E" opacity=".75"/>
+            <rect x="294" y="112" width="120" height="6" rx="3" fill="#46230E" opacity=".14"/>
+            <rect x="294" y="130" width="106" height="6" rx="3" fill="#46230E" opacity=".14"/>
+            <rect x="294" y="148" width="120" height="6" rx="3" fill="#46230E" opacity=".14"/>
+            <rect x="294" y="166" width="90" height="6" rx="3" fill="#46230E" opacity=".14"/>
+            <rect x="294" y="184" width="112" height="6" rx="3" fill="#46230E" opacity=".14"/>
+            <circle cx="396" cy="232" r="17" fill="none" stroke="#A90F15" stroke-width="2.5"/>
+            <circle cx="396" cy="232" r="9" fill="#A90F15" opacity=".85"/>
+          </g>
+          <g transform="rotate(-6 330 120)" opacity=".7">
+            <rect x="300" y="30" width="120" height="150" rx="10" fill="#FFFFFF" stroke="#46230E" stroke-opacity=".12"/>
+            <rect x="318" y="52" width="60" height="7" rx="3.5" fill="#820F1F" opacity=".5"/>
+            <rect x="318" y="72" width="84" height="5" rx="2.5" fill="#46230E" opacity=".12"/>
+            <rect x="318" y="86" width="72" height="5" rx="2.5" fill="#46230E" opacity=".12"/>
+          </g>
+          <!-- 법전 -->
+          <rect x="62" y="352" width="240" height="36" rx="5" fill="#46230E"/>
+          <rect x="70" y="358" width="6" height="24" rx="2" fill="#F6F4F2" opacity=".25"/>
+          <rect x="96" y="352" width="12" height="36" fill="#A90F15" opacity=".9"/>
+          <rect x="276" y="356" width="20" height="28" rx="3" fill="#F6F4F2" opacity=".85"/>
+          <rect x="80" y="318" width="214" height="34" rx="5" fill="#820F1F"/>
+          <rect x="250" y="318" width="12" height="34" fill="#F6F4F2" opacity=".35"/>
+          <rect x="88" y="322" width="18" height="26" rx="3" fill="#F6F4F2" opacity=".85"/>
+          <rect x="96" y="290" width="184" height="28" rx="5" fill="#E9DCD5" stroke="#46230E" stroke-opacity=".2"/>
+          <rect x="120" y="290" width="10" height="28" fill="#820F1F" opacity=".7"/>
+          <!-- 저울 -->
+          <rect x="146" y="276" width="80" height="14" rx="4" fill="#46230E"/>
+          <rect x="182" y="112" width="8" height="166" rx="3" fill="#46230E"/>
+          <circle cx="186" cy="102" r="10" fill="#820F1F"/>
+          <rect x="96" y="124" width="180" height="6" rx="3" fill="#46230E"/>
+          <circle cx="186" cy="127" r="6" fill="#A90F15"/>
+          <g stroke="#46230E" stroke-width="1.6" stroke-linecap="round" fill="none">
+            <path d="M104 130 L74 206 M104 130 L134 206"/>
+            <path d="M268 130 L238 206 M268 130 L298 206"/>
+          </g>
+          <path d="M64 206 H144 Q104 244 64 206 Z" fill="#820F1F"/>
+          <path d="M228 206 H308 Q268 244 228 206 Z" fill="#820F1F"/>
+          <!-- 장식 -->
+          <circle cx="66" cy="96" r="4" fill="#A90F15" opacity=".5"/>
+          <circle cx="440" cy="330" r="5" fill="#820F1F" opacity=".35"/>
+          <circle cx="400" cy="380" r="3" fill="#46230E" opacity=".3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Members -->
+  <section class="block" id="members" aria-labelledby="members-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">01</span>
+        <h2 id="members-title">구성원 소개</h2>
+        <p class="section-desc">카드를 누르면 구성원별 주요 경력과 수행 업무를 확인할 수 있습니다.</p>
+      </div>
+      <ul class="grid reveal" id="member-grid"></ul>
+    </div>
+  </section>
+
+  <!-- 02 Services -->
+  <section class="block" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">02</span>
+        <h2 id="services-title">서비스</h2>
+        <p class="section-desc">항목을 누르면 서비스 설명을 볼 수 있습니다.</p>
+      </div>
+      <div class="svc-cats" id="svc-cats"></div>
+      <noscript><p>서비스 상세 설명을 보려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+    </div>
+  </section>
+
+  <!-- 03 Achievements -->
+  <section class="block" id="achievements" aria-labelledby="achievements-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">03</span>
+        <h2 id="achievements-title">주요 실적</h2>
+      </div>
+      <ol class="achievements reveal">
+        <li class="achievement">
+          <span class="achievement-idx" aria-hidden="true">01</span>
+          <span class="tag">컨설팅</span>
+          <p>OO위원회 통합 콜센터 시범운영을 위한 상담사 근로조건 설계 연구용역</p>
+        </li>
+        <li class="achievement">
+          <span class="achievement-idx" aria-hidden="true">02</span>
+          <span class="tag">컨설팅</span>
+          <p>OO문화재단 노동조합 및 노동관계조정법 개정 대응 및 현장 노무관리 컨설팅</p>
+        </li>
+        <li class="achievement">
+          <span class="achievement-idx" aria-hidden="true">03</span>
+          <span class="tag">노사관계</span>
+          <p>OO기술원 단체교섭 사측 교섭위원 참여</p>
+        </li>
+        <li class="achievement">
+          <span class="achievement-idx" aria-hidden="true">04</span>
+          <span class="tag">노동사건</span>
+          <p>OO기업 부당해고 구제신청 사건 대리</p>
+        </li>
+        <li class="achievement">
+          <span class="achievement-idx" aria-hidden="true">05</span>
+          <span class="tag">노동사건</span>
+          <p>OO기관 직장 내 괴롭힘 사건 조사</p>
+        </li>
+      </ol>
+      <p class="note">※ 고객 보호를 위해 기관명·기업명은 공개하지 않습니다.</p>
+    </div>
+  </section>
+
+  <!-- 04 Fee estimate -->
+  <section class="block" id="fee" aria-labelledby="fee-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">04</span>
+        <h2 id="fee-title">상시자문 예상 비용 확인</h2>
+        <p class="section-desc">상시근로자 수를 입력하면 월 예상 비용을 바로 확인할 수 있습니다.</p>
+      </div>
+      <div class="card fee reveal">
+        <form class="fee-form" id="fee-form" autocomplete="off" novalidate>
+          <div>
+            <h3>사업장 정보</h3>
+            <p class="fee-basis">사기업 기준 · 월 금액 · VAT 별도</p>
+          </div>
+          <div class="field">
+            <label for="fee-count">상시근로자 수</label>
+            <div class="input-wrap">
+              <input id="fee-count" name="count" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 20" aria-describedby="fee-bracket">
+              <span aria-hidden="true">명</span>
+            </div>
+          </div>
+          <label class="check">
+            <input id="fee-payroll" type="checkbox">
+            <span>급여아웃소싱(4대보험 관리 포함) 추가</span>
+          </label>
+        </form>
+
+        <div class="fee-result">
+          <h3>예상 비용 <span class="sr-only">(월, VAT 별도)</span></h3>
+          <p class="fee-bracket" id="fee-bracket">상시근로자 수를 입력해 주세요.</p>
+          <dl class="fee-rows" aria-live="polite">
+            <div class="fee-row"><dt>상시자문비</dt><dd id="fee-base">-</dd></div>
+            <div class="fee-row"><dt>급여아웃소싱 추가비</dt><dd id="fee-payroll-amt">-</dd></div>
+            <div class="fee-row total"><dt>합계 (월)</dt><dd id="fee-total">-</dd></div>
+          </dl>
+          <ul class="fee-notes">
+            <li>VAT 별도 금액입니다.</li>
+            <li>본 금액은 참고용 예상 비용이며, 실제 보수는 사업장 현황 확인 후 상담을 통해 확정됩니다.</li>
+            <li>노동사건(부당해고·임금체불 등) 대리 및 컨설팅은 별도 협의가 필요합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Contact -->
+  <section class="block" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">05</span>
+        <h2 id="contact-title">문의 및 오시는 길</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="card contact-info">
+          <dl>
+            <div class="contact-row"><dt>주소</dt><dd class="addr">서울특별시 중구 청계천로 100, 시그니처타워 서관 10층</dd></div>
+            <div class="contact-row"><dt>대표전화</dt><dd><a href="tel:02-6403-2580">02-6403-2580</a></dd></div>
+            <div class="contact-row"><dt>팩스</dt><dd>02-6280-7374</dd></div>
+            <div class="contact-row"><dt>이메일</dt><dd><a href="mailto:aonelabor@a1nomu.com">aonelabor@a1nomu.com</a></dd></div>
+            <div class="contact-row"><dt>운영시간</dt><dd>평일 09:00~18:00 (토·일 휴무)</dd></div>
+          </dl>
+        </div>
+        <div class="card contact-cta">
+          <div>
+            <h3>상담 문의</h3>
+            <p>사건 상담, 자문, 교육·컨설팅 문의는 온라인 상담 예약으로 접수하실 수 있습니다.</p>
+          </div>
+          <a class="btn" href="https://aone.mraon.com/html/brand/contact" target="_blank" rel="noopener noreferrer">
+            상담 예약하기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+            <span class="sr-only">(새 탭에서 열림)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© 2026 에이원노무법인. All rights reserved.</p>
+    <p class="footer-meta"><span>대표 한만목</span><span>사업자등록번호 779-88-01461</span></p>
+  </div>
+</footer>
+
+<!-- 구성원 상세 모달 -->
+<dialog class="modal" id="member-modal" aria-labelledby="modal-name">
+  <button type="button" class="modal-close" id="modal-close" aria-label="닫기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="modal-scroll">
+    <div class="modal-content">
+      <div class="modal-photo"><img id="modal-photo" alt=""></div>
+      <div>
+        <h2 class="modal-name" id="modal-name"></h2>
+        <p class="modal-role" id="modal-role"></p>
+        <div class="modal-block">
+          <h3>주요 경력 사항</h3>
+          <ul class="modal-list" id="modal-career"></ul>
+        </div>
+        <div class="modal-block">
+          <h3>주요 수행 업무</h3>
+          <ul class="modal-list" id="modal-work"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ===================== 구성원 데이터 =====================
+     카드 요약(summary)은 기존 제공 내용,
+     경력(career)·수행 업무(work)·사진은 https://aone.mraon.com/brand/people 기준 */
+  var MEMBERS = [
+    {
+      name: '한만목', role: '대표 공인노무사', photo: 'images/people_img01.png',
+      summary: ['한국공인노무사회 조정중재단 중재위원', '한국갈등해결센터 갈등 조정 전문위원', '한국고용노동교육원 외래강사(최우수 강사 수상)'],
+      career: ['(현) 에이원노무법인 대표 공인노무사', '서울특별시 노란봉투법 자문단', '한국갈등해결센터 갈등 조정 전문위원', '한국공인노무사회 조정중재단 중재위원', '인하대학교 창업지원단 노무분야 위원장', '한국고용노동교육원 외래 강사(최우수 강사)', '고용노동부 민간위탁 컨설팅 컨설턴트', '갈등관리사(1급)', '공인노무사회 HR 컨설턴트 양성 과정 수료', '(전) 우리 노무법인 공인노무사', '(전) 노무법인 대양 공인노무사', '연세대 보건대학원 산재 예방·보상전문가 과정 수료', '인하대학교 법학과 졸업'],
+      work: ['기업체 대상 인사·노무 상시 자문', '중앙행정기관 공무직 단체교섭 및 임금교섭 교섭위원', '산업안전 진단 및 개선 컨설팅', '준정부기관 노사관계 고도화 컨설팅', '비정규직 컨설팅 및 노사관계 진단 컨설팅', '채용, 보상, 평가 등 임금체계 및 평가제도 컨설팅', '직장 내 괴롭힘 및 성희롱 사건 대리', '부당해고·정직·부당노동행위 노동위원회 구제신청 대리', '한국고용노동교육원 교육과정 개발', '노동관계법령·노조법·단체교섭 및 노사협의 강의']
+    },
+    {
+      name: '이상운', role: '부대표 공인노무사', photo: 'images/people_img02.png',
+      summary: ['서울특별시 노동권리보호관', '공공기관 고충처리위원회 위원', '서울특별시 최우수 마을노무사 표창'],
+      career: ['(현) 에이원노무법인 부대표 공인노무사', '서울특별시 노동권리보호관', '공공기관 고충처리위원회 위원', '서울특별시 최우수 마을노무사 표창', '(전) 노무법인 시선 공인노무사', '방송통신대학교 법학과 졸업', '고려대학교 서어서문학과 졸업', '고려대학교 일반대학원 사회법 석사(수료)'],
+      work: ['공공기관·노동조합·기업체 대상 인사·노무 자문', '인사(고충처리)위원회 및 채용면접 외부위원 활동', '근로복지공단 산재보상신청 대리', '직장 내 괴롭힘 및 성희롱 사건 대리', '부당해고·정직·부당노동행위 노동위원회 구제신청 대리', '청소년노동인권교육 강의', '서울노동아카데미 노동인문학 강의', '지자체 민간위탁기관 대상 노동관계법령 강의', '한국고용노동교육원 직장 내 괴롭힘 예방교육 강의', '한국고용노동교육원 공무원/공공기관 노동관계법령 강의']
+    },
+    {
+      name: '신나리', role: '부대표 공인노무사', photo: 'images/people_img03.png',
+      summary: ['(전) 용인시청 기획조정실 노무사', '(전) 천안시청 노무사', '(전) 국회의원실 정책비서관'],
+      career: ['(현) 에이원노무법인 공인노무사', '갈등관리사(2급)', '(전) 천안시청 행정지원과 노무사(6급)', '(전) 용인시청 기획조정실 노무사(5급)', '(전) 국회사무처 이수진 의원실 정책비서관', '(전) 서울시청 (6급)', '(전) 천안문화재단 비정규직 정규직 전환심의위원회 위원', '(전) 충청남도 사회서비스원 고충심의위원회 위원', '(전) 한국소방산업기술원 성과평가위원회 위원', '숙명여자대학교 법학부 졸업', '숙명여자대학교 일반대학원 법학과정 석사(수료)'],
+      work: ['천안시 산업안전보건법 과태료 미처분 사건 소송 수행', '천안시 산업안전보건위원회 위원', '천안시 단체협약, 임금협약 교섭위원', '용인시 단체협약, 임금협약 교섭위원', '서울시 노사협의회 운영', '천안시 공무직 근로자 운영총괄', '서울시 비정규직(기간제) 근로자 운영총괄', '서울시 비정규직 채용사전심사 운영총괄', '서울시 촉탁직 노동조합 관리 및 단체협약, 임금협약 교섭위원', '서울시 인재개발원 공공기관 노동문제의 이해 출강']
+    },
+    {
+      name: '이설아', role: '공인노무사', photo: 'images/people_img04.png',
+      summary: ['직장갑질119 법률스태프', '공인노무사회 HR컨설턴트 양성과정 수료'],
+      career: ['(현) 에이원노무법인 공인노무사', '직장갑질119 법률스태프', '청소년 근로권익 보호 상담 및 권리구제 위원', '갈등관리사(2급)', '공인노무사회 HR 컨설턴트 양성 과정 수료', '공인노무사 연수교육 고용노동부장관 우수상', '(전) 노무법인 현장 공인노무사', '(전) 한국갤럽조사연구소 마케팅 조사 연구원', '한동대학교 상담심리학과 졸업'],
+      work: ['기업체·공공기관·노동조합 대상 인사·노무 자문', '임금체불 등 노동관계법령 위반 노동청 진정 대리', '부당해고, 부당징계 등 노동위원회 구제 신청 대리', '직장 내 괴롭힘 및 성희롱 조사', 'OO공공기관 직장 내 괴롭힘 실태 조사', '직무체계, 평가체계, 임금체계 컨설팅', '취업규칙 및 근로계약서 HR 컨설팅', '단체교섭 지원 및 전략 컨설팅']
+    },
+    {
+      name: '장미', role: '파트너 공인노무사', photo: 'images/people_img05.png',
+      summary: ['직장갑질119 법률스태프', '청년유니온 자문노무사', '서울시교육청 특성화고 노동인권교육 강사'],
+      career: ['(현) 에이원노무법인 파트너 공인노무사', '직장갑질119 법률스태프', '청년유니온 자문노무사', '서울시 교육청 특성화고 노동인권교육 강사', '여성노동법률지원센터 직장 내 성희롱 예방교육 강사', '(전) 한국예술인복지재단'],
+      work: ['공공기관·노동조합·기업체 대상 인사·노무 자문', '직장 내 괴롭힘 및 성희롱 사건 대리', '노동관계법령 위반 행위 노동청 진정 대리', '부당해고·정직·부당노동행위 노동위원회 구제신청 대리', '임금·평가제도·조직문화 개선 컨설팅', '단체교섭·단체협약 체결 지원 및 전략 컨설팅', '서울시 교육청 강의', '○○재단 직장 내 괴롭힘 교육', '○○지역자활센터 직장 내 괴롭힘 및 성희롱 예방교육', '청소년노동인권교육 강의']
+    },
+    {
+      name: '장진욱', role: '파트너 공인노무사', photo: 'images/people_img06.png',
+      summary: ['고용노동부 근로조건 자율개선 위원', '(전) Marriott HR(미국)', 'UC Irvine 국제경영전문가 과정 이수'],
+      career: ['(현) 에이원노무법인 파트너 공인노무사', '고용노동부 근로조건 자율개선 위원', '교육부 기업계고 현장실습 기업 코칭 위원', '청소년 근로권익 보호 상담 및 권리구제 위원', '(전) 한국농어촌공사인재개발원, 국제교육교류센터', '(전) Marriott HR – Dana Point, CA, USA', '홍익대학교 경영학과 졸업', 'University of California at Irvine 국제경영전문가과정 이수'],
+      work: ['국내 및 외국계 기업 자문 및 규정 정비', '비정규직 고용구조개선 컨설팅', '근로자성 진단 및 도급 적법성 진단 컨설팅', '노사관계 및 노무관리 진단 컨설팅', '직장 내 괴롭힘 및 직장 내 성희롱 사건 조사 및 사건 대리', '임금체불 및 대지급금 구제 신청 대리', '부당해고 사건 대리']
+    }
+  ];
+
+  /* ===================== 아이콘 (라인 SVG) ===================== */
+  var ICONS = {
+    advice: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+    payroll: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/>',
+    edu: '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/><path d="M7 12l3-3 2 2 4-4"/>',
+    inspect: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4"/><path d="M9 13l2 2 4-4"/>',
+    hr: '<path d="M3 21h18"/><rect x="5" y="12" width="3" height="6" rx=".5"/><rect x="10.5" y="8" width="3" height="10" rx=".5"/><rect x="16" y="4" width="3" height="14" rx=".5"/>',
+    safety: '<path d="M3 18h18"/><path d="M5 18v-3a7 7 0 0 1 14 0v3"/><path d="M10 8.3V5.5h4v2.8"/>',
+    subcontract: '<circle cx="11" cy="11" r="6.5"/><path d="M20.5 20.5l-4.8-4.8"/><path d="M8.5 11l1.8 1.8L14 9.2"/>',
+    culture: '<circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0"/><path d="M2 19a3.5 3.5 0 0 1 4-3.4M22 19a3.5 3.5 0 0 0-4-3.4"/>',
+    strategy: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/>',
+    bargain: '<path d="M3 5h11v7H8l-3 3v-3H3z"/><path d="M17 9h4v7h-2v3l-3-3h-6v-2"/>',
+    council: '<circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="12" cy="20.5" r="1.5"/><circle cx="3.5" cy="12" r="1.5"/><circle cx="20.5" cy="12" r="1.5"/>',
+    mediation: '<path d="M12 3v18M6 21h12M4 7h16"/><path d="M7 7l-3 7a3 3 0 0 0 6 0z"/><path d="M17 7l-3 7a3 3 0 0 0 6 0z"/>',
+    dismissal: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 8l4 4M21 8l-4 4"/>',
+    ulp: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/>',
+    wage: '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>',
+    harass: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M12 8v4.2M12 15.6v.01"/>',
+    accident: '<path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M12 9v6M9 12h6"/>',
+    process: '<rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 9v5a2 2 0 0 0 2 2H14"/><path d="M12 14l2 2-2 2"/>',
+    apply: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14h6"/>',
+    appeal: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M15.5 15H9m0 0l2.2-2.2M9 15l2.2 2.2"/>'
+  };
+  function icon(name) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
+  }
+
+  /* ===================== 서비스 데이터 =====================
+     설명은 https://aone.mraon.com/ 각 서비스 페이지 내용을 요약 */
+  var SERVICES = [
+    { title: '기업서비스', items: [
+      { name: '상시자문', icon: 'advice', desc: '노동법률·인사관리·노동사건 자문과 유용한 정보 제공을 포함하는 상시 자문 서비스입니다. 자문계약 체결 후 담당 노무사를 지정하고, 기업 내외부 환경을 분석해 구두·서면·방문상담으로 지원합니다. 회원사에는 정기 뉴스레터, 주요 노동이슈 리포트, 자문사 특별강의 등의 혜택을 제공합니다.' },
+      { name: '급여아웃소싱', icon: 'payroll', desc: '임금·상여금 등의 임금관리와 4대보험 처리, 퇴직관리를 전문가에게 위탁하는 서비스입니다. 임금 계산과 임금대장·개인별 임금명세서 작성, 공제사항 관리, 퇴직정산, 보험관계 신고 및 피보험자격 취득·상실신고 대행 등을 수행하며, 공인노무사가 직접 감수합니다.' },
+      { name: '교육', icon: 'edu', desc: '법정의무교육(직장 내 성희롱 예방, 장애인 인식개선, 개인정보보호, 산업안전보건, 퇴직연금 교육)과 대상별 인사·노무 실무교육을 제공합니다. 기업 분석을 바탕으로 맞춤 교육 프로그램을 설계하며, 규모별·업종별 특화 교육도 가능합니다.' },
+      { name: '근로감독 대응', icon: 'inspect', desc: '고용노동부 사업장 지도점검 대상으로 선정되면 대응 자료 준비, 현장 대응, 시정지시 이행 관리가 필요합니다. 근로감독 자료 준비, 필요 시 현장 상주 대응, 시정조치 이행·결과보고, 사후관리까지 지원합니다.' }
+    ]},
+    { title: '컨설팅', items: [
+      { name: '인사 및 임금체계', icon: 'hr', desc: '직무조사·분석·평가를 통한 직무중심 인사관리와, 기업의 전략·목표와 연계된 임금체계 및 평가제도 개편을 지원합니다. 조직진단·저성과자 관리 등 조직관리 대안과 유연근로시간제·교대제 등 근로시간 및 근무체계 개편도 함께 설계합니다.' },
+      { name: '산업안전보건', icon: 'safety', desc: '산업안전보건법 개정, 중대재해처벌법 제정 등으로 체계적인 산업안전보건관리가 필요합니다. 사업장 현황을 분석해 적법한 개선안을 도출하며, 고용노동부 특별·정기·기획감독 대응, 작업중지 해제, 안전관리시스템 구축을 지원합니다.' },
+      { name: '하도급 점검', icon: 'subcontract', desc: '도급 운영에 따른 리스크를 사전에 점검하고, 현장의 업무 프로세스와 현황을 고려한 개선안을 수립합니다. 도급계약서·작업지시서 등 문헌 분석, 현장 실사, 리스크 진단, 개선안 도출 후 특별점검·현장관리자 교육 등 사후서비스를 제공합니다.' },
+      { name: '조직문화 진단', icon: 'culture', desc: '상생의 노사문화 실현을 위해 사업장의 환경·역량·제도·의식을 진단하고 개선방안을 제시합니다. 실행과제와 추진전략 수립, 정기점검·워크숍·피드백 등 실행 지원을 함께 제공합니다.' }
+    ]},
+    { title: '노사관계', items: [
+      { name: '노사관계 전략', icon: 'strategy', desc: '복잡하고 불명확한 집단적 노사관계에서 절차와 과정을 통제할 수 있도록 전략 수립을 돕습니다. 복수노조 사업장의 갈등관리 등, 노사 대립 상황을 Win-Win의 관계로 전환하는 데 조력합니다.' },
+      { name: '단체교섭 및 단체협약', icon: 'bargain', desc: '이론과 실무를 겸비한 협상 전문가가 단체교섭을 조력합니다. 대내외 환경·노사 역량 분석, 교섭 핵심 이슈와 목표 확정, 교섭 수행 및 협상·대응전략 수립을 거쳐 단체협약 체결까지 지원합니다.' },
+      { name: '노사협의회', icon: 'council', desc: '근로자참여법에 따라 상시근로자 30인 이상 사업장은 노사협의회를 갖추어야 합니다. 노사협의회를 적법하게 설치하고, 업무·조직 개선과 현장 정보 공유 등 실질적인 노사 소통 창구로 기능하도록 조력합니다.' },
+      { name: '사적 조정', icon: 'mediation', desc: '해결이 어려운 노동쟁의는 조정 전문가를 통한 사적 조정을 활용할 수 있습니다(노조법 제52조, 공인노무사법 제2조). 노사가 최종안을 스스로 결정해 분쟁 비용을 줄이고, 연관 문제까지 유연한 절차로 논의할 수 있습니다.' }
+    ]},
+    { title: '노동사건', items: [
+      { name: '부당해고 및 징계', icon: 'dismissal', desc: '부당해고·징계 사건을 사건별 사실관계에 맞춰 대리합니다. 초기 상담 단계부터 증거(언행과 자료)를 관리해 유리한 국면을 만들 수 있도록 지원하고, 고객 맞춤형 해결책을 모색합니다.' },
+      { name: '부당노동행위', icon: 'ulp', desc: '사용자가 노동3권과 관련된 행위를 침해·방해하는 부당노동행위에 대해, 노동조합 또는 회사의 위임을 받아 노동위원회 구제신청 사건을 진행합니다. 교섭창구 단일화 절차, 공정대표 의무 위반, 교섭단위 결정 등 집단적 노사관계 문제도 다룹니다.' },
+      { name: '임금체불 및 대지급금', icon: 'wage', desc: '임금·퇴직금 등이 체불된 경우 근로자 또는 회사의 위임을 받아 노동청 진정 사건을 대리하며, 정확한 체불임금 계산으로 신속한 해결을 도모합니다. 기업 도산 등으로 임금을 받지 못한 경우 대지급금 금액 산정과 신청 절차를 지원합니다.' },
+      { name: '직장 내 괴롭힘 및 성희롱 사건 조사', icon: 'harass', desc: '직장 내 괴롭힘·성희롱 사건을 전문적이고 균형 잡힌 시각으로 조사합니다. 서면조사부터 관련자 진술·증거 확보, 이의제기 절차까지 절차적 정당성을 확보해 조사 결과의 수용성을 높이고, 피해자 보호·행위자 조치·재발 방지까지 일관된 해결을 돕습니다.' }
+    ]},
+    { title: '산업재해', items: [
+      { name: '산재 가능 범위', icon: 'accident', desc: '산재보험법은 업무상 사고, 업무상 질병, 출퇴근 재해를 업무상 재해로 보고 있습니다(제37조). 다만 업무와 재해 사이에 상당인과관계가 있어야 인정되므로, 질병의 경우 근무 환경과 업무 부담이 발병에 어떤 영향을 주었는지가 핵심 쟁점이 됩니다. 구체적인 사안은 상담을 통해 검토해 드립니다.' },
+      { name: '산재보상 종류 및 절차', icon: 'process', desc: '보험급여는 요양급여, 휴업급여, 장해급여, 간병급여, 유족급여, 상병보상연금, 장례비, 직업재활급여로 나뉩니다(제36조). 근로복지공단에 보험급여를 신청하면 공단이 지급 여부를 결정하며, 업무상 질병은 업무상질병​판정위원회의 심의를 거칩니다. 구체적인 사안은 상담을 통해 검토해 드립니다.' },
+      { name: '산재 신청', icon: 'apply', desc: '근로복지공단에 제출하는 보험급여 신청을 대리합니다. 재해 경위 정리부터 진단서·근무 기록 등 업무 관련성을 뒷받침할 서류와 입증자료 준비까지 함께 지원합니다. 구체적인 사안은 상담을 통해 검토해 드립니다.' },
+      { name: '이의신청', icon: 'appeal', desc: '근로복지공단의 결정에 불복하는 경우, 결정이 있음을 안 날부터 90일 이내에 공단에 심사청구를 할 수 있습니다(제103조). 심사청구 결정에도 불복하면 결정을 안 날부터 90일 이내에 산업재해보상보험​재심사위원회에 재심사청구를 하고(제106조), 이후 행정소송으로 다툴 수 있습니다. 구체적인 사안은 상담을 통해 검토해 드립니다.' }
+    ]}
+  ];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+
+  /* ===================== 구성원 카드 + 모달 ===================== */
+  var grid = document.getElementById('member-grid');
+  grid.innerHTML = MEMBERS.map(function (m, i) {
+    return '<li class="card lift member" data-index="' + i + '">' +
+      '<div><h3><button type="button" class="member-open" aria-haspopup="dialog">' + esc(m.name) + '<span class="sr-only"> 상세 정보 보기</span></button></h3><p class="member-role">' + esc(m.role) + '</p></div>' +
+      '<ul class="member-list">' + m.summary.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' +
+      '<span class="member-more">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>' +
+      '</li>';
+  }).join('');
+
+  var modal = document.getElementById('member-modal');
+  var lastTrigger = null;
+  function listHTML(arr) { return arr.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join(''); }
+  function openMember(i, trigger) {
+    var m = MEMBERS[i];
+    var img = document.getElementById('modal-photo');
+    img.src = m.photo;
+    img.alt = m.name + ' ' + m.role + ' 사진';
+    document.getElementById('modal-name').textContent = m.name;
+    document.getElementById('modal-role').textContent = m.role;
+    document.getElementById('modal-career').innerHTML = listHTML(m.career);
+    document.getElementById('modal-work').innerHTML = listHTML(m.work);
+    lastTrigger = trigger;
+    modal.querySelector('.modal-scroll').scrollTop = 0;
+    if (typeof modal.showModal === 'function') { modal.showModal(); } else { modal.setAttribute('open', ''); }
+    document.documentElement.classList.add('modal-open');
+    document.getElementById('modal-close').focus();
+  }
+  function closeModal() {
+    if (typeof modal.close === 'function' && modal.open) { modal.close(); } else { modal.removeAttribute('open'); onClosed(); }
+  }
+  function onClosed() {
+    document.documentElement.classList.remove('modal-open');
+    if (lastTrigger) lastTrigger.focus();
+  }
+  grid.addEventListener('click', function (e) {
+    var card = e.target.closest('.member');
+    if (card) openMember(+card.dataset.index, card.querySelector('.member-open'));
+  });
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); }); // 배경 클릭
+  modal.addEventListener('close', onClosed);                                              // ESC 포함
+  document.addEventListener('keydown', function (e) {                                     // dialog 미지원 브라우저용 ESC
+    if (e.key === 'Escape' && modal.hasAttribute('open') && typeof modal.showModal !== 'function') closeModal();
+  });
+
+  /* ===================== 서비스 ===================== */
+  var inlineMQ = window.matchMedia('(max-width: 480px)'); // 모바일: 선택한 타일 아래로 펼침
+  var cats = document.getElementById('svc-cats');
+  cats.innerHTML = SERVICES.map(function (c, ci) {
+    return '<article class="card svc-cat reveal" data-cat="' + ci + '">' +
+      '<div class="svc-cat-head"><h3>' + esc(c.title) + '</h3><span class="svc-cat-count">' + c.items.length + '개 분야</span></div>' +
+      '<div class="svc-layout"><div class="svc-grid">' +
+      c.items.map(function (it, ii) {
+        return '<button type="button" class="svc-btn" data-item="' + ii + '" aria-expanded="false" aria-controls="svc-panel-' + ci + '">' + icon(it.icon) + '<span>' + esc(it.name) + '</span></button>';
+      }).join('') +
+      '</div><div class="svc-panel" id="svc-panel-' + ci + '" role="region" aria-live="polite" tabindex="0" hidden></div></div>' +
+      '</article>';
+  }).join('');
+
+  var state = SERVICES.map(function () { return null; });
+
+  function renderCat(ci) {
+    var cat = cats.querySelector('[data-cat="' + ci + '"]');
+    var layout = cat.querySelector('.svc-layout');
+    var gridEl = cat.querySelector('.svc-grid');
+    var panel = cat.querySelector('.svc-panel');
+    var btns = gridEl.querySelectorAll('.svc-btn');
+    var sel = state[ci];
+    if (!inlineMQ.matches && sel === null) sel = state[ci] = 0;  // 데스크톱·태블릿은 항상 하나 표시
+
+    btns.forEach(function (b, i) { b.setAttribute('aria-expanded', String(i === sel)); });
+
+    if (sel === null) { panel.hidden = true; layout.appendChild(panel); return; }
+    var it = SERVICES[ci].items[sel];
+    panel.innerHTML = '<p class="svc-panel-label">' + esc(SERVICES[ci].title) + '</p><h4>' + esc(it.name) + '</h4><p>' + esc(it.desc) + '</p>';
+    panel.setAttribute('aria-label', it.name + ' 설명');
+    panel.hidden = false;
+    panel.scrollTop = 0;
+    if (!inlineMQ.matches) {
+      layout.appendChild(panel);                       // 데스크톱: 오른쪽 / 태블릿: 아래
+    } else {
+      gridEl.insertBefore(panel, btns[sel].nextSibling); // 선택한 아이콘 바로 아래
+    }
+  }
+  function renderAll() { SERVICES.forEach(function (_, ci) { renderCat(ci); }); }
+
+  cats.addEventListener('click', function (e) {
+    var btn = e.target.closest('.svc-btn');
+    if (!btn) return;
+    var ci = +btn.closest('.svc-cat').dataset.cat;
+    var ii = +btn.dataset.item;
+    state[ci] = (inlineMQ.matches && state[ci] === ii) ? null : ii; // 모바일에서 다시 누르면 접기
+    renderCat(ci);
+  });
+  if (inlineMQ.addEventListener) inlineMQ.addEventListener('change', renderAll); else inlineMQ.addListener(renderAll);
+  renderAll();
+
+  /* ===================== 예상 비용 계산 (저장·전송 없음) ===================== */
+  var countEl = document.getElementById('fee-count');
+  var payrollEl = document.getElementById('fee-payroll');
+  var out = {
+    bracket: document.getElementById('fee-bracket'),
+    base: document.getElementById('fee-base'),
+    pay: document.getElementById('fee-payroll-amt'),
+    total: document.getElementById('fee-total')
+  };
+  var BRACKETS = [
+    { min: 100, max: Infinity, fee: 600000, label: '100인 이상' },
+    { min: 51, max: 99, fee: 450000, label: '51~99인' },
+    { min: 41, max: 50, fee: 300000, label: '41~50인' },
+    { min: 31, max: 40, fee: 200000, label: '31~40인' },
+    { min: 16, max: 30, fee: 150000, label: '16~30인' },
+    { min: 5, max: 15, fee: 100000, label: '5~15인' }
+  ];
+  function won(n) { return n.toLocaleString('ko-KR') + '원'; }
+  function calc() {
+    var raw = countEl.value.trim();
+    var payroll = payrollEl.checked;
+    out.total.classList.remove('consult');
+
+    if (raw === '' && !countEl.validity.badInput) {
+      out.bracket.textContent = '상시근로자 수를 입력해 주세요.';
+      out.base.textContent = out.pay.textContent = out.total.textContent = '-';
+      return;
+    }
+    var n = Number(raw);
+    var b = null;
+    if (!countEl.validity.badInput && Number.isInteger(n)) {
+      for (var i = 0; i < BRACKETS.length; i++) { if (n >= BRACKETS[i].min && n <= BRACKETS[i].max) { b = BRACKETS[i]; break; } }
+    }
+    if (!b) {
+      out.bracket.textContent = '입력하신 인원은 자동 계산 대상이 아닙니다.';
+      out.base.textContent = out.pay.textContent = '-';
+      out.total.textContent = '상담을 통해 안내드립니다';
+      out.total.classList.add('consult');
+      return;
+    }
+    var payAmt = payroll ? Math.round(b.fee * 0.5) : 0;
+    out.bracket.textContent = '적용 구간: ' + b.label;
+    out.base.textContent = won(b.fee);
+    out.pay.textContent = payroll ? won(payAmt) : '선택 안 함';
+    out.total.textContent = won(b.fee + payAmt);
+  }
+  countEl.addEventListener('input', calc);
+  payrollEl.addEventListener('change', calc);
+  document.getElementById('fee-form').addEventListener('submit', function (e) { e.preventDefault(); });
+  calc();
+
+  /* ===================== 스크롤 페이드인 ===================== */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

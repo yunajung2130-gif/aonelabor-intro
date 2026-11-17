@@ -1,0 +1,12 @@
+# OS 자동 생성 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+# 임시·백업 파일
+*.tmp
+*.bak
+*.swp
+~$*
+_shot.html
+_frame.html
+_test.html
